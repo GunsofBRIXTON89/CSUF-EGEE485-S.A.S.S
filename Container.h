@@ -22,15 +22,18 @@ enum container_cell{ Bottom_cell , Top_cell };
 
 class Container{
 public:
-	Container() : isShelf(true), container_State(NONE_FILLED) {}  // default ctor
+	// Default Ctor
+	Container() : isShelf(true), container_State(NONE_FILLED) {} 
 
+	
 	// Accessors 
-	int			Get_cState() { return container_State; }
-	bool		IsShelf() { return shelf_status; }
-	string		Get_ItemName(int CellNum);
-	string		Get_Expiration(int CellNum);
-	time_t		Get_Timestamp(int CellNum);
-	void		print_cell_contents(int CellNum);
+	int		Get_cState() { return container_State; }
+	bool	IsShelf() { return shelf_status; }
+	string	Get_ItemName(int CellNum);
+	string	Get_Expiration(int CellNum);
+	time_t	Get_Timestamp(int CellNum);
+	void	Print_Cell_Contents(int CellNum);
+	
 	
 	// Mutators
 	void	Update_cState();
@@ -39,6 +42,10 @@ public:
 	void	Set_Expiration(string  Name, int CellNum);
 	void	Set_FillStatus(bool status, int CellNum);
 	void	Clear_Cell(int CellNum);
+	void	Insert_Item(int cell_Number,string name, string expiration,
+						double height, double dia_length, double volume,
+								double labeled_oz, double approx_weight);
+
 
 
 private:

@@ -147,6 +147,42 @@ void	Storage_System::Increment_Avl_Cells() {
 
 
 
+// === Insert_Item ===========================================================
+// 
+// This function take in arguements call 
+// 
+// Notes: 
+//		This function operates under the assumption that the user checked 
+//		to see if there is space in the system to insert the item. If they
+//		have done so, open_container will be pointing to the right location.
+//		
+//		Also, note there is no timestamp being passed. This is because the
+//		timestamp is initiated when the Cell object is initiated
+//		
+// Input:
+//		all arguements [IN] -- data that will be stored in the Cell
+//		
+// ============================================================================
+void	Storage_System::Insert_Item(string name, string expiration, double height,
+		 double dia_length, double volume, double labeled_oz,double approx_weight){
+	
+	// this function call updates the container state as well
+	open_Container->Container::Insert_Item( open_cellNUM , name, expiration, height,
+									  dia_length,volume, labeled_oz, approx_weight);
+	Decrement_Avl_Cells();
+	
+} // End of Insert_Item(...)
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*	std::cout << std::string(10*3 + 2*3, '-') << "\n";

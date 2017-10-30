@@ -18,14 +18,18 @@ using namespace std;
 class Cell{
 public:
 
-	// === Cell() =================================================================
-	// Description: Default Cell constructor
-	// ============================================================================
+	// Default Cell constructor
 	Cell() : itemName("No name"), itemExpiration("No name"), itemTimestamp(NULL),
 			 itemHeight(0.0), item_dia_length(0.0), itemVolume(0.0),
 		     item_Labeled_Oz(0.0), item_approx_weight(0.0), fill_status(false) {
-			} // end of Cell()
+	} // end of Cell()
 
+	// Destructor: Does nothing; There isn't dynamic memory in the Cell members 
+	~Cell() {}
+
+	//Copy Constructor prototype~Cell();
+	operator=(Cell &rhs);
+	
 
 
 	// === Cell(string, string ...) ===============================================
@@ -46,6 +50,9 @@ public:
 		SetFillStatus(true);
 
 	} // end of Cell(string, string ....)
+
+	// Copy Constructor
+	void	operator=(const Cell &rhs);
 
 
 	// Accessors

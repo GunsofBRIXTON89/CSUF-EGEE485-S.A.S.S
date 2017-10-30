@@ -11,6 +11,23 @@
 
 
 
+// === operator=(Cell)=========================================================
+//  Copy constructor the cell objects
+// ============================================================================
+void	Cell::operator=(const Cell &rhs) {
+	string	itemName = rhs.itemName;
+	string	itemExpiration = rhs.itemExpiration;
+	time_t	itemTimestamp = rhs.itemTimestamp;
+	double	itemHeight = rhs.itemHeight;
+	double	item_dia_length = rhs.item_dia_length;
+	double	itemVolume = rhs.itemVolume;
+	double	item_Labeled_Oz = rhs.item_Labeled_Oz;
+	double	item_approx_weight = rhs.item_approx_weight;
+
+} // end of operator=(Cell)
+
+
+
 // === Clear_Cell =============================================================
 // 
 // ============================================================================
@@ -30,7 +47,7 @@ void Cell::Clear_Cell() {
 
 
 
-// === Print_Cell_Contents =============================================================
+// === Print_Cell_Contents ====================================================
 // 
 // ============================================================================
 void	Cell::Print_Cell_Contents() {

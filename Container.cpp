@@ -137,12 +137,42 @@ void	Container::Clear_Cell(int CellNum){
 
 
 
-// === Print_cell_contents ====================================================
+// === Print_Cell_Contents ====================================================
 //
 //
 //
 // ============================================================================
-void	Container::print_cell_contents(int CellNum) {
+void	Container::Print_Cell_Contents(int CellNum) {
 	Storage_Cell[CellNum - 1].Print_Cell_Contents();
  
-} // end of print_cell_contents
+} // end of Print_Cell_Contents
+
+
+
+// === Insert_Item ===========================================================
+// 
+// This function takes in arguements and dynamically allocates a cell that is
+// initialized with those arguements.This function also updates the 
+// container state.
+//
+// Notes: 
+//		Also, note there is no timestamp being passed. This is because the
+//		timestamp is initiated when the Cell object is initiated
+//		
+// Input:
+//		all arguements [IN] -- data will be stored in the Cell
+//		
+// ============================================================================
+void	Container::Insert_Item(int cell_Number, string name, string expiration, 
+							   double height, double dia_length, double volume, 
+										double labeled_oz, double approx_weight){
+
+	Cell* myCell = new Cell(name, expiration, height, dia_length, volume,
+		labeled_oz, approx_weight);
+	Storage_Cell[cell_Number - 1] = *myCell;
+	delete myCell;
+	Update_cState();
+
+	return;
+
+} // End of Insert_Item(...)
