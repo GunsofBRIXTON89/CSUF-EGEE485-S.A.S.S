@@ -14,8 +14,8 @@
 // Description: 
 // ============================================================================
 void Container::Update_cState(){
-	bool x = Storage_Cell[0].GetFillStatus; // Check Bottom Cell
-	bool y = Storage_Cell[1].GetFillStatus; // Check Top Cell
+	bool x = Storage_Cell[Bottom_cell].GetFillStatus; 
+	bool y = Storage_Cell[Top_cell].GetFillStatus; 
 	
 	if (x && y) { // two possible cases: NONE_FILLED or LARGE
 		if (x = true) {
@@ -44,43 +44,68 @@ void Container::Update_cState(){
 // Cell Wrappers
 
 // === Get_ItemName ===========================================================
-// Description: 
+// 
+// 
+// Input:
+//
+// Output:
+//
 // ============================================================================
-string	Container::Get_ItemName(int CellNum){
+string		Container::Get_ItemName(int CellNum){
 	return Storage_Cell[CellNum - 1].GetItemName(); 
 } // end of Get_Item Name
 
 
 
 // === Get_Expiration =========================================================
-// Description: 
+// 
+//
+// Input:
+//
+// Output:
+//
 // ============================================================================
-string	Container::Get_Expiration(int CellNum){
+string		Container::Get_Expiration(int CellNum){
 	return Storage_Cell[CellNum - 1].GetExpiration();
 } // end of Get_Expiration
 
 
 
 // === Get_Timestamp ==========================================================
-// Description: 
+// 
+//
+// Input:
+//
+// Output:
+//
 // ============================================================================
-time_t	Container::Get_Timestamp(int CellNum){
+time_t		Container::Get_Timestamp(int CellNum){
 	return Storage_Cell[CellNum - 1].GetTimestamp();
 } // end of Get_Timestamp
 
 
 
 // === Set_ItemName  ==========================================================
-// Description: 
+// 
+//
+// Input:
+//
+// Output:
+//
 // ============================================================================
-void	Container::Set_ItemName(string Name, int CellNum){
+void		Container::Set_ItemName(string Name, int CellNum){
 	Storage_Cell[CellNum - 1].SetItemName(Name);
 } // end of Set_ItemName
 
 
 
 // === Set_Expiration =========================================================
-// Description: 
+// 
+//
+// Input:
+//
+// Output:
+//
 // ============================================================================
 void	Container::Set_Expiration(string  Name, int CellNum){
 	Storage_Cell[CellNum - 1].SetExpiration(Name);
@@ -89,7 +114,10 @@ void	Container::Set_Expiration(string  Name, int CellNum){
 
 
 // === Set_FillStatus =========================================================
-// Description: 
+// 
+//
+// Input:
+//
 // ============================================================================
 void	Container::Set_FillStatus(bool status, int CellNum){
 	Storage_Cell[CellNum - 1].SetFillStatus(status);
@@ -98,9 +126,23 @@ void	Container::Set_FillStatus(bool status, int CellNum){
 
 
 // === Clear_Cell =============================================================
-// Description: 
+//
+//
+//
 // ============================================================================
-
 void	Container::Clear_Cell(int CellNum){
 	Storage_Cell[CellNum - 1].Clear_Cell();
 } // end of Clear_Cell
+
+
+
+
+// === Print_cell_contents ====================================================
+//
+//
+//
+// ============================================================================
+void	Container::print_cell_contents(int CellNum) {
+	Storage_Cell[CellNum - 1].Print_Cell_Contents();
+ 
+} // end of print_cell_contents

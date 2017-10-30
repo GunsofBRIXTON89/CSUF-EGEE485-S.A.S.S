@@ -14,6 +14,7 @@ using namespace std;
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
+
 class Cell{
 public:
 
@@ -52,6 +53,7 @@ public:
 	string	GetExpiration() { return itemExpiration; }
 	bool	GetFillStatus(){ return fill_status; }
 	time_t	GetTimestamp() { return itemTimestamp; }
+	void	Print_Cell_Contents();
 
 
 	// Mutatators

@@ -12,11 +12,13 @@ using namespace std;
 
 #define MAX_CELLS 2
 
+
+
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
 enum cState{ NONE_FILLED, FIRST_FILLED, SECOND_FILLED, BOTH_FILLED, LARGE};
-
+enum container_cell{ Bottom_cell , Top_cell };
 
 class Container{
 public:
@@ -28,6 +30,7 @@ public:
 	string		Get_ItemName(int CellNum);
 	string		Get_Expiration(int CellNum);
 	time_t		Get_Timestamp(int CellNum);
+	void		print_cell_contents(int CellNum);
 	
 	// Mutators
 	void	Update_cState();
