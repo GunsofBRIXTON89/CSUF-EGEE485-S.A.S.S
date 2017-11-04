@@ -47,8 +47,8 @@ public:
 
 private:
 	Container	SS_Array[MAX_CONTAINER_ROWS][MAX_CONTAINER_COLS];
-	Container*									open_Container;
-	int											  open_CellNum; 
-	int										   available_Cells;
+	Container*					  open_Container;
+	int						    open_CellNum; 
+	int						 available_Cells;
 	
 }; // end of Storage_System Class
