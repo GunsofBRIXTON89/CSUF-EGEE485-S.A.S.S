@@ -41,8 +41,8 @@ public:
 	void	Remove_Item(int i, int j, int k); //TODO
 	void	FindItem(string item_name); //TODO?
 	void	Insert_Item(string name, string expiration, double height, 
-						double dia_length, double volume, double labeled_oz,
-														double approx_weight); //TODO
+	double dia_length, double volume, double labeled_oz,
+	double approx_weight); //TODO
 
 
 private:
