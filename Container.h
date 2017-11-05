@@ -36,8 +36,8 @@ public:
 	
 	
 	// Mutators
-	void	Update_cState();
 	void	Set_ShelfState(bool state) { shelf_State = state; }
+	void	Update_cState();
 	void	Set_ItemName(string Name, int CellNum); 
 	void	Set_Expiration(string  Name, int CellNum);
 	void	Set_FillStatus(bool status, int CellNum);

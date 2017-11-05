@@ -38,17 +38,17 @@ public:
 	bool	IsSpaceAvailable(int specific_case);
 	void	Decrement_Avl_Cells();
 	void	Increment_Avl_Cells();
-	void	Remove_Item(int i, int j, int k); //TODO
-	void	FindItem(string item_name); //TODO?
+	void	Remove_Item(); 
+	bool	FindItem(string item_name); //TODO?
 	void	Insert_Item(string name, string expiration, double height, 
-	double dia_length, double volume, double labeled_oz,
-	double approx_weight); //TODO
+						double dia_length, double volume, double labeled_oz,
+														double approx_weight); //TODO
 
 
 private:
 	Container	SS_Array[MAX_CONTAINER_ROWS][MAX_CONTAINER_COLS];
-	Container*					  open_Container;
-	int						    open_CellNum; 
-	int						 available_Cells;
+	Container*									open_Container;
+	int											  open_CellNum; 
+	int										   available_Cells;
 	
-}; // end of Storage_System Class
+}; // end of Storage_System Class 

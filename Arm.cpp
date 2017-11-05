@@ -9,4 +9,14 @@
 // ============================================================================
 
 #include"Arm.h"
-using namespace std;
+
+// === Validate_Key ===========================================================
+//
+// Everytime the Arm object wants to use the I2C line, it must first call on 
+// this function to confirm it has exclusive access to the I2C line
+//
+// ============================================================================
+bool	Arm::Validate_Key() {
+	return( arm_key == arm_I2C-> Get_Access_Key() );
+
+} // end of Validate_Key

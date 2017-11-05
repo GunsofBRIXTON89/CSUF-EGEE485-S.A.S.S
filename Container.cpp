@@ -7,7 +7,7 @@
 // Assignment: Self-resizing Automated Storage Sysyem (S.A.S.S)
 // Description: Implementation for Container Class
 // ============================================================================
-
+#include <cstring>
 #include "Container.h"
 
 // === Update_cState ==========================================================

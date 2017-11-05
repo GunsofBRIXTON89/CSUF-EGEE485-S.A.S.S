@@ -9,7 +9,6 @@
 // ============================================================================
 #include<stdexcept>
 #include"Storage_System.h"
-
 using namespace std;
 
 
@@ -86,7 +85,7 @@ bool	Storage_System::IsSpaceAvailable(){
 //
 // Output:
 //		true: specific case exist and  member Open_Container now points to it.
-//		false: the specifica case does not exist in the system and Open_Container
+//		false: the specific case does not exist in the system and Open_Container
 //			   points to the previous containter it was pointing to.
 //		
 // ============================================================================
@@ -115,10 +114,6 @@ bool	Storage_System::IsSpaceAvailable(int specific_case) {
 // Decrements private member available_cells. Throws Exception if
 // attempting to decrement below zero.
 //
-// Input:
-//
-// Output:
-//
 // ============================================================================
 void	Storage_System::Decrement_Avl_Cells(){
 	if (available_Cells == 0){ 
@@ -133,8 +128,8 @@ void	Storage_System::Decrement_Avl_Cells(){
 
 // === Increment_Avl_Cells ====================================================
 //
-// Increments private member available_cells. Throws Exception if 
-// attempting to Increment past MAX_AVAILABLE_CELLS.
+// Increments private member available_cells. Throws Exception if attempting 
+// to Increment past MAX_AVAILABLE_CELLS.
 //
 // ============================================================================
 void	Storage_System::Increment_Avl_Cells() {
@@ -175,6 +170,23 @@ void	Storage_System::Insert_Item(string name, string expiration, double height,
 
 
 
+
+// === Remove_Item ===========================================================
+// 
+// This function clears the targeted cell that is accessed with the member  
+// values "open_Container" and "open_CellNull". It also increments the value 
+// of max available cells and updates the state of the system before exiting.
+//
+// Notes: It is assumed that the user has called the function
+// Storage_System::Finditem(string) before this function is called. Otherwise,
+// it will clear the cell that open_Container.Storage_Cell[open_CellNum -1] 
+// is able to to access. 
+//		
+//		
+// ===========================================================================
+void	Storage_System::Remove_Item() {
+
+} // end of Remove_Item
 
 
 

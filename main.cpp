@@ -22,5 +22,7 @@ using namespace std;
 //
 // ============================================================================
 int		main(void){
+	std::cout << "hello world\n";
+	return 0;
 
 } // end of main

@@ -9,14 +9,20 @@
 // ============================================================================
 
 #include"Gpio.h"
-using namespace std;
+#include"I2CDevice.h"
+
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
-class Claw: public exploringRPi::GPIO{
-	{
+class Claw{
 public:
-	Claw(){ cout << "Default Claw ctor\n"; }// default ctor
+	Claw() :claw_I2C(NULL) {}
+	Claw(exploringRPi::I2CDevice *I2C_Ref) { claw_I2C = I2C_Ref; }
+	bool Validate_Key();
+
 private:
+	const string	claw_key = CLAWKEY;
+	exploringRPi::I2CDevice		*claw_I2C;
+	
 
 }; // end of Claw Class

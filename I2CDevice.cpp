@@ -32,6 +32,7 @@
 #include<sys/ioctl.h>
 #include<linux/i2c.h>
 #include<linux/i2c-dev.h>
+#include<string>
 using namespace std;
 
 #define HEX(x) setw(2) << setfill('0') << hex << (int)(x)
@@ -44,10 +45,13 @@ namespace exploringRPi {
  * @param bus The bus number. Usually 0 or 1 on the RPi
  * @param device The device ID on the bus.
  */
-I2CDevice::I2CDevice(unsigned int bus, unsigned int device):
-	BusDevice(bus,device){
+	I2CDevice::I2CDevice(unsigned int bus, unsigned int device) :
+		BusDevice(bus, device){
 	this->open();
-}
+	Access_Key->clear();
+	Access_Key = "Access Denied!";
+	}
+
 
 /**
  * Open a connection to an I2C device
@@ -168,5 +172,47 @@ void I2CDevice::close(){
 I2CDevice::~I2CDevice() {
 	if(file!=-1) this->close();
 }
+
+
+// === Set_Access_Key =========================================================
+// 
+// Allows the user to set the private member "Access_Key" to a unique key that
+// matches a controllable objects [object]_key member.
+//
+// ============================================================================
+void	I2CDevice::Set_Access_Key(int allowed_object) {
+	Access_Key.clear();
+	switch (allowed_object) {
+	case	ARM:
+		Access_Key = ARMKEY;
+		break;
+	case	CLAW:
+		Access_Key = CLAWKEY;
+		break;
+	case	MOTOR:
+		Access_Key = MOTORKEY;
+		break;
+	case	SENSORS_AND_MEASUREMENT:
+		Access_Key = SENSORKEY;
+		break;
+	default:
+		Access_Key = "Access Denied!";
+		break;
+	};
+
+} // end of Set_Access_Key
+
+
+
+// === Get_Access_Key =========================================================
+//
+// Returns  value of member "Access_Key"
+//
+// ============================================================================
+string	I2CDevice::Get_Access_Key() {
+	return Access_Key;
+
+} // end of Get_Access_Key
+
 
 } /* namespace exploringRPi */

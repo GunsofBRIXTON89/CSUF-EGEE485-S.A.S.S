@@ -28,9 +28,17 @@
 
 #define RPI_I2C_0 "/dev/i2c-0"
 #define RPI_I2C_1 "/dev/i2c-1"
+//keys
+#define ARMKEY "flex"
+#define CLAWKEY "slash!"
+#define MOTORKEY "vroom!"
+#define SENSORKEY "beep!"
+
 
 namespace exploringRPi{
 
+enum control_object{ARM,CLAW,MOTOR,SENSORS_AND_MEASUREMENT};
+	
 /**
  * @class I2CDevice
  * @brief Generic I2C Device class that can be used to connect to any type of I2C device and read or write to its registers
@@ -39,6 +47,7 @@ class I2CDevice:public BusDevice{
 
 public:
 	I2CDevice(unsigned int bus, unsigned int device);
+
 	virtual int open();
 	virtual int write(unsigned char value);
 	virtual unsigned char readRegister(unsigned int registerAddress);
@@ -47,7 +56,15 @@ public:
 	virtual void debugDumpRegisters(unsigned int number = 0xff);
 	virtual void close();
 	virtual ~I2CDevice();
-};
+
+	// added for Access Functionality
+	void	Set_Access_Key(int allowed_object);
+	string	Get_Access_Key();
+
+private:
+		string Access_Key;
+
+}; 
 
 } /* namespace exploringRPi */
 

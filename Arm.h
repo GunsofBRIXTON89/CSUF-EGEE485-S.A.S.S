@@ -7,15 +7,21 @@
 // Assignment: Self-resizing Automated Storage Sysyem (S.A.S.S)
 // Description: Header file for the Arm Class
 // ============================================================================
-#include<iostream>
 #include"Gpio.h"
-using namespace std;
+#include"I2CDevice.h"
+
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
-class Arm:public exploringRPi::GPIO{
+class Arm{
 public:
-	Arm(){ cout << "Default Arm ctor\n"; }
+	Arm() :arm_I2C(NULL) {}
+	Arm(exploringRPi::I2CDevice *I2C_Ref) { arm_I2C = I2C_Ref; }
+
+	bool Validate_Key();
+
 private:
+	const string arm_key = ARMKEY;
+	exploringRPi::I2CDevice	*arm_I2C;
 
 }; // end of Arm Class
