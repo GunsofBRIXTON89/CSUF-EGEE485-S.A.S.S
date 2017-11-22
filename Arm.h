@@ -13,6 +13,8 @@
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
+
+
 class Arm{
 public:
 	Arm() :arm_I2C(NULL) {}
@@ -20,8 +22,20 @@ public:
 
 	bool Validate_Key();
 
+	// TODO: ===============================================
+	void	Open_Arm();
+	void	Close_Arm();
+	void	Push_Arm();
+	void	Pull_Arm();
+	// =====================================================
+
 private:
 	const string arm_key = ARMKEY;
 	exploringRPi::I2CDevice	*arm_I2C;
 
 }; // end of Arm Class
+
+
+
+
+

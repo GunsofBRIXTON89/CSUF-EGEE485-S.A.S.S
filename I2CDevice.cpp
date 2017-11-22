@@ -48,8 +48,8 @@ namespace exploringRPi {
 	I2CDevice::I2CDevice(unsigned int bus, unsigned int device) :
 		BusDevice(bus, device){
 	this->open();
-	Access_Key->clear();
-	Access_Key = "Access Denied!";
+	Access_Key.clear();
+	Access_Key = "Access Denied!"; 
 	}
 
 

@@ -17,12 +17,22 @@
 class Claw{
 public:
 	Claw() :claw_I2C(NULL) {}
-	Claw(exploringRPi::I2CDevice *I2C_Ref) { claw_I2C = I2C_Ref; }
+	Claw(exploringRPi::I2CDevice *I2C_Ref){ claw_I2C = I2C_Ref; }
 	bool Validate_Key();
+	// TODO: ===============================================
+	void	Open_Claw();
+	void	Close_Claw(); // should have a set value to to grab same thickness of shelves
+
+	void	Fold();
+	void	Unfold();
+
+	void	Push_Claw(); 
+	void	Pull_Claw();
+	// =====================================================
+
 
 private:
-	const string	claw_key = CLAWKEY;
-	exploringRPi::I2CDevice		*claw_I2C;
-	
+	const string				claw_key = CLAWKEY;
+	exploringRPi::I2CDevice				 *claw_I2C;	
 
 }; // end of Claw Class

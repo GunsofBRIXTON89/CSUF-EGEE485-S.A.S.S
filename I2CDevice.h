@@ -34,11 +34,15 @@
 #define MOTORKEY "vroom!"
 #define SENSORKEY "beep!"
 
+#define GPIO2  3 // pullup GPIO# [Physical Pin]
+#define GPIO3  5 // pullup
+
 
 namespace exploringRPi{
 
 enum control_object{ARM,CLAW,MOTOR,SENSORS_AND_MEASUREMENT};
-	
+
+
 /**
  * @class I2CDevice
  * @brief Generic I2C Device class that can be used to connect to any type of I2C device and read or write to its registers
