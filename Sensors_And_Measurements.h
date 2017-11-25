@@ -24,11 +24,10 @@ enum mode { ON, OFF };
 
 class Sensors_And_Measurement{
 public:
-	Sensors_And_Measurement() :sensor_I2C(NULL) {}
-	Sensors_And_Measurement(exploringRPi::I2CDevice *I2C_Ref):Trig01(GPIO4),
-						Trig02(GPIO5),Trig03(GPIO6) { sensor_I2C = I2C_Ref; }
-	bool Validate_Key();
+	Sensors_And_Measurement():Trig01(GPIO4),Trig02(GPIO5),Trig03(GPIO6) { }
+	//bool Validate_Key();
 
+		/*
 	// TODO: ==================================
 	void	 Set_Trig(int distSensorNum, int val);
 	void	 ReadEcho(int distSensorNum);
@@ -36,10 +35,10 @@ public:
 	void	 Get_Measurements(double &height, double &w_dia);
 	double	 Calc_Volume(double height, double w_dia);
 	// ========================================
-
+    */
 private:
-	const string	sensor_key = SENSORKEY;
-	exploringRPi::I2CDevice	   *sensor_I2C;
+	//const string	sensor_key = SENSORKEY;
+	//exploringRPi::I2CDevice	   *sensor_I2C;
 	
 	// Digital Pins
 	exploringRPi::GPIO						Trig01;

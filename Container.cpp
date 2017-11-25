@@ -14,12 +14,12 @@
 // Description: 
 // ============================================================================
 void Container::Update_cState(){
-	bool x = Storage_Cell[Bottom_cell].GetFillStatus; 
-	bool y = Storage_Cell[Top_cell].GetFillStatus; 
+	bool x = Storage_Cell[Bottom_cell].GetFillStatus(); 
+	bool y = Storage_Cell[Top_cell].GetFillStatus(); 
 	
 	if (x && y) { // two possible cases: NONE_FILLED or LARGE
 		if (x = true) {
-			container_State = LARGE;
+			container_State = CLARGE;
 			return;
 		}else{
 			container_State = NONE_FILLED;

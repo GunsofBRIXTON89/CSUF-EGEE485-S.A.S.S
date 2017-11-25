@@ -25,6 +25,7 @@
 #include "pwmDriver.h"
 #include <iostream>
 #include <unistd.h>
+#include<io.h> // for Windows VS17
 #include <math.h>
 #include <stdio.h>
 

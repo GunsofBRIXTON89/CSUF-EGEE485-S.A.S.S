@@ -62,11 +62,11 @@ public:
 	virtual ~I2CDevice();
 
 	// added for Access Functionality
-	void	Set_Access_Key(int allowed_object);
-	string	Get_Access_Key();
+//	void	Set_Access_Key(int allowed_object);
+//	string	Get_Access_Key();
 
 private:
-		string Access_Key;
+		//string Access_Key;
 
 }; 
 

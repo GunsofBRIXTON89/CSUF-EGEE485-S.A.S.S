@@ -29,6 +29,7 @@
 #include<iomanip>
 #include<stdio.h>
 #include<unistd.h>
+//#include<io.h> // for Windows VS17
 #include<sys/ioctl.h>
 #include<linux/i2c.h>
 #include<linux/i2c-dev.h>
@@ -173,7 +174,7 @@ I2CDevice::~I2CDevice() {
 	if(file!=-1) this->close();
 }
 
-
+/*
 // === Set_Access_Key =========================================================
 // 
 // Allows the user to set the private member "Access_Key" to a unique key that
@@ -213,6 +214,7 @@ string	I2CDevice::Get_Access_Key() {
 	return Access_Key;
 
 } // end of Get_Access_Key
-
+*/
 
 } /* namespace exploringRPi */
+

@@ -30,6 +30,7 @@
 #include<cstdio>
 #include<fcntl.h>
 #include<unistd.h>
+//#include<io.h> // For Windowsk VS17
 #include<sys/epoll.h>
 #include<pthread.h>
 using namespace std;

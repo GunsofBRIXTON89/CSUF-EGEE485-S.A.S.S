@@ -23,7 +23,7 @@ using namespace std;
 #define GPIO26 37 // pulldown
 #define GPIO14 8  // pulldown
 #define GPIO15 10 // pulldown
-#define GPIO18 12 // pulldown
+//#define GPIO18 12 // pulldown
 #define GPIO23 16 // pulldown
 #define GPIO24 18 // pulldown
 #define GPIO17 11 // pulldown
@@ -31,7 +31,7 @@ using namespace std;
 #define GPIO22 15 // pulldown
 #define GPIO10 19 // pulldown
 #define GPIO9  21 // pulldown
-#define GPIO11 23 // pulldown
+//#define GPIO11 23 // pulldown
 #define GPIO25 22 // pulldown
 #define GPIO12 32 // pulldown
 // Motor Definitions
@@ -56,29 +56,33 @@ using namespace std;
 
 enum motor{X,Z};
 enum direction{Forward,Reverse};
+enum shelf{Bottom, Top};
 
 class Motor{
 public:
 	// Constructor
 	Motor(exploringRPi::PWMDriver *pwmDriver);
-
-	bool	Validate_Key();
-	// TODO: ===============================
-	void Move_xDirection(float dir); //private
-	void Move_To_Col(); // public
-	void Return_xHome(); // private
-	void Move_zDirection(); //private
-	void Move_To_Row();
-	void Return_ZHome();
-	//void Set_Fullstep();  We are only using FullStep
-	void Set_Direction(int motor = X, int dir = Forward);
-	float Get_RPM(int motor = X) const { return rpm[motor]; }
+	void Move_To_Row(int row, int col, int t_or_b = Bottom);
+	void Move_To_Col(int row, int col);
 	void Set_Dist_Travel(int motor, const float dist);
-	void Set_Velocity(int vel, int motor = X);
-	void Move_Motor(float distance, int motor = X, int dir = Forward);
-	// =====================================
-
+	void Set_zVelocity(int zVel);
+	void Set_xVelocity(int xVel);
+	float Get_RPM(int motor = X) const { return rpm[motor]; }
+	void Move_To_Cordinates(int row, int col, int t_or_b = Bottom);
+	
 private:
+	//Private Functions
+	void Set_Velocity(int vel, int motor = X);
+	void Move_xDirection(float distance);
+	void Return_xHome();
+	void Return_zHome();
+	void Move_zDirection(float distance);
+	void Return_Home(int motor = X, int direction = Reverse);
+	void Set_FullStep(int motor = X);
+	void Set_Direction(int motor = X, int dir = Forward);
+	void Move_Motor(float distance, int motor = X, int dir = Forward);
+	void Update_CurrLocation(int motor, int dir, float distance);
+
 	
 	//void Offset_x(); // private  TODO: Consider after other functionalities are implemented
 	//void Offset_z(); // private
@@ -88,13 +92,14 @@ private:
 	int		z_OutputNumber;
 	float	rpm[NUM_MOTORS]; // Rotations of Stepper motor per minute
 	float	dist[NUM_MOTORS]; // (mm) - Linear Distance travel
-
 	float	frequency[NUM_MOTORS]; // PWM frequency
 	float   velocity[NUM_MOTORS]; // in (mm/s)
 	unsigned long int wait_time[NUM_MOTORS]; //in (us)
-	int traveled[NUM_MOTORS];
-	int screw_pitch[NUM_MOTORS];
+	float traveled[NUM_MOTORS];
+	float screw_pitch[NUM_MOTORS];
 	int curr_Motor_dir;
+	float x_currLocation;
+	float z_currLocation;
 	
 
 	exploringRPi::PWMDriver *pwmDriver; // Pointer to the PCA9685 PWM Driver
@@ -103,8 +108,8 @@ private:
 	exploringRPi::GPIO				x_MS1;
 	exploringRPi::GPIO				x_MS2;
 	exploringRPi::GPIO				x_MS3;
-	exploringRPi::GPIO	 x_Inverted_Reset;
-	exploringRPi::GPIO	 x_Inverted_Sleep;
+	exploringRPi::GPIO	 x_Inverted_Sleep_And_Reset;
+	//exploringRPi::GPIO	 x_Inverted_Sleep;
 	exploringRPi::GPIO		  x_Direction; // Assuming Low is Forward. Verify by test
 
 	// GPIO pins for Z-direction Stepper
@@ -112,34 +117,32 @@ private:
 	exploringRPi::GPIO				z_MS1;
 	exploringRPi::GPIO				z_MS2;
 	exploringRPi::GPIO				z_MS3;
-	exploringRPi::GPIO	 z_Inverted_Reset;
-	exploringRPi::GPIO	 z_Inverted_Sleep;
+	exploringRPi::GPIO	 z_Inverted_Sleep_And_Reset;
+	//exploringRPi::GPIO	 z_Inverted_Sleep;
 	exploringRPi::GPIO		  z_Direction;
 
-	const float x_dir_Map[3][6] = {
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-	};
+	float x_dir_Map[6][3] = {
+		{ 0.00f, 32.45f, 66.50f },
+		{ 0.00f, 32.15f, 66.48f },
+		{ 0.00f, 32.10f, 66.60f },
+		{ 0.00f, 32.23f, 66.73f },
+		{ 0.00f, 32.63f, 66.60f },
+		{ 0.00f, 33.31f, 66.64f } };
 
-	const float x_offsets[3][3] = {
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 }
+	float x_offsets[3][3] = {
+		{ 0.0f, 0.0f, 0.0f },
+		{ 0.0f, 0.0f, 0.0f },
+		{ 0.0f, 0.0f, 0.0f }
 	};
 
 	
-	const float z_dir_Map[3][6]{
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.0 },
-	};
+	float z_dir_Map[6][3]{
+		{   0.0f,   0.0f,   0.0f },
+		{ 154.4f, 151.4f, 150.4f },
+		{ 308.8f, 302.8f, 300.8f },
+		{ 449.3f, 400.8f, 441.3f },
+		{ 602.7f, 440.8f, 441.3f},
+		{ 746.2f, 591.7f, 741.7f } };
 
 }; // end of Motor Class
 

@@ -28,7 +28,7 @@ public:
 	~Cell() {}
 
 	//Copy Constructor prototype~Cell();
-	operator=(Cell &rhs);
+	Cell& operator=(const Cell &rhs);
 	
 
 
@@ -50,10 +50,6 @@ public:
 		SetFillStatus(true);
 
 	} // end of Cell(string, string ....)
-
-	// Copy Constructor
-	void	operator=(const Cell &rhs);
-
 
 	// Accessors
 	string	GetItemName() { return itemName; }

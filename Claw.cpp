@@ -9,7 +9,7 @@
 // ============================================================================
 #include"Claw.h"
 
-
+/*
 // === Validate_Key ===========================================================
 //
 // Everytime the Claw wants to use the I2C line, it must first call on this 
@@ -19,4 +19,5 @@
 bool	Claw::Validate_Key() {
 	return( claw_key == claw_I2C->Get_Access_Key() );
 
-} // end of Validate_Key
+} // end of 
+*/

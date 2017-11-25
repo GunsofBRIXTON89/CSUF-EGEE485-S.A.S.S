@@ -24,7 +24,8 @@
 
 #include "Servo.h"
 #include <iostream>
-#include <unistd.h>
+//#include <unistd.h>
+#include <io.h> 
 #include <math.h>
 #include <stdio.h>
 

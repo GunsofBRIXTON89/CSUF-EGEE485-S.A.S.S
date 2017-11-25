@@ -51,11 +51,11 @@ public:
    PWMDriver(unsigned int I2CBus=1, unsigned int I2CAddress=0x40);
    virtual int reset();
    virtual int sleep();
-   virtual int wake() { reset(); }
+   virtual int wake() {return reset(); }
 
    virtual int setOutput(unsigned int outputNumber, float dutyCycle, float phaseOffset=0.0f); // 0-15, 0.0-100.0, 0.0f
-   virtual int setOutputFullyOn(unsigned int outputNumber) { setOutput(outputNumber, 100.0f); }
-   virtual int setOutputFullyOff(unsigned int outputNumber){ setOutput(outputNumber, 0.0f);   }
+   virtual int setOutputFullyOn(unsigned int outputNumber) { return setOutput(outputNumber, 100.0f); }
+   virtual int setOutputFullyOff(unsigned int outputNumber){ return setOutput(outputNumber, 0.0f);   }
 
    virtual int setFrequency(float frequency);       // a value between 24.0 and 1526.0 (Hz)
    virtual float getFrequency();

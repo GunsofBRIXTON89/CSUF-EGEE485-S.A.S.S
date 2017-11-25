@@ -10,6 +10,7 @@
 
 #include"Arm.h"
 
+/*
 // === Validate_Key ===========================================================
 //
 // Everytime the Arm object wants to use the I2C line, it must first call on 
@@ -20,3 +21,4 @@ bool	Arm::Validate_Key() {
 	return( arm_key == arm_I2C-> Get_Access_Key() );
 
 } // end of Validate_Key
+*/

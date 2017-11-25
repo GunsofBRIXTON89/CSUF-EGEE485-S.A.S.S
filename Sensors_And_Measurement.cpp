@@ -17,7 +17,7 @@
 // the I2C line.
 //
 // ============================================================================
-bool	Sensors_And_Measurement::Validate_Key() {
-	return( sensor_key == sensor_I2C->Get_Access_Key() );
+//bool	Sensors_And_Measurement::Validate_Key() {
+//	return( sensor_key == sensor_I2C->Get_Access_Key() );
 	
-} // end of Validate_Key
+//} // end of Validate_Key

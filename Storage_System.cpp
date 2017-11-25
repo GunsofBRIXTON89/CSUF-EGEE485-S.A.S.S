@@ -7,6 +7,7 @@
 // Assignment: Self-resizing Automated Storage Sysyem (S.A.S.S)
 // Description: Implementation for Storage_System Class
 // ============================================================================
+#include<iostream>
 #include<stdexcept>
 #include"Storage_System.h"
 using namespace std;
@@ -16,9 +17,9 @@ using namespace std;
 // 
 // ============================================================================
 void	Storage_System::DisplayContainer(int i, int j){
-	std::cout << "=========\n " <<
-		"|   " << SS_Array[i][j].Get_cState() << "   |\n" <<
-		"=========" << end;
+	cout << "=========\n " <<
+		"|   " << (int)SS_Array[i][j].Get_cState() << "   |\n" <<
+		"=========" << endl;
 } // end of DisplayContainter
 
 
@@ -27,7 +28,7 @@ void	Storage_System::DisplayContainer(int i, int j){
 // 
 // ============================================================================
 void	Storage_System::PrintCellInfo(int i, int j, int k){
-	SS_Array[i][j].print_cell_contents(k);
+	SS_Array[i][j].Print_Cell_Contents(k);
 	
 } // end of Print Cell
 
@@ -134,7 +135,7 @@ void	Storage_System::Decrement_Avl_Cells(){
 // ============================================================================
 void	Storage_System::Increment_Avl_Cells() {
 	if (available_Cells == MAX_AVAILABLE_CELLS) {
-		throw out_of_range("Out_of_range Error: Cannot Increment past Max Cells")
+		throw out_of_range("Out_of_range Error: Cannot Increment past Max Cells");
 	}
 	++available_Cells;
 
@@ -162,7 +163,7 @@ void	Storage_System::Insert_Item(string name, string expiration, double height,
 		 double dia_length, double volume, double labeled_oz,double approx_weight){
 	
 	// this function call updates the container state as well
-	open_Container->Container::Insert_Item( open_cellNUM , name, expiration, height,
+	open_Container->Container::Insert_Item( open_CellNum , name, expiration, height,
 									  dia_length,volume, labeled_oz, approx_weight);
 	Decrement_Avl_Cells();
 	

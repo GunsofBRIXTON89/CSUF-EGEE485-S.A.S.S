@@ -17,18 +17,18 @@ using namespace std;
 #pragma once // designed to cause the current source file to be included once
 //  for compilation
 
-enum cState{ NONE_FILLED, FIRST_FILLED, SECOND_FILLED, BOTH_FILLED, LARGE};
+enum cState{ NONE_FILLED, FIRST_FILLED, SECOND_FILLED, BOTH_FILLED, CLARGE};
 enum container_cell{ Bottom_cell , Top_cell };
 
 class Container{
 public:
 	// Default Ctor
-	Container() : isShelf(true), container_State(NONE_FILLED) {} 
+	Container() : shelf_State(true), container_State(NONE_FILLED) {} 
 
 	
 	// Accessors 
 	int		Get_cState() { return container_State; }
-	bool	IsShelf() { return shelf_status; }
+	bool	IsShelf() { return shelf_State; }
 	string	Get_ItemName(int CellNum);
 	string	Get_Expiration(int CellNum);
 	time_t	Get_Timestamp(int CellNum);

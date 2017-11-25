@@ -7,14 +7,17 @@
 // Assignment: Self-resizing Automated Storage Sysyem (S.A.S.S)
 // Description: Implementation for Cell Class
 // ============================================================================
+#include<iostream>
 #include "Cell.h"
 
 
 
-// === operator=(Cell)=========================================================
+
+
+// === operator= ==============================================================
 //  Copy constructor the cell objects
 // ============================================================================
-void	Cell::operator=(const Cell &rhs) {
+Cell& Cell::operator=(const Cell &rhs) {
 	string	itemName = rhs.itemName;
 	string	itemExpiration = rhs.itemExpiration;
 	time_t	itemTimestamp = rhs.itemTimestamp;
@@ -23,6 +26,7 @@ void	Cell::operator=(const Cell &rhs) {
 	double	itemVolume = rhs.itemVolume;
 	double	item_Labeled_Oz = rhs.item_Labeled_Oz;
 	double	item_approx_weight = rhs.item_approx_weight;
+	return *this;
 
 } // end of operator=(Cell)
 
@@ -50,9 +54,10 @@ void Cell::Clear_Cell() {
 // === Print_Cell_Contents ====================================================
 // 
 // ============================================================================
-void	Cell::Print_Cell_Contents() {
-	cout << "The Item Name is: " << itemName << endl;
-	cout << "The Epiration Date is: " << itemExpiration << endl;
-	cout << "The Labeled Ounces of the item is: " << item_Labeled_Oz << "Oz\n"
-		 << "The item was entered on: " << time(&itemExpiration) << endl;
+void Cell::Print_Cell_Contents() {
+	std::cout << "The Item Name is: " << itemName << std::endl;
+	std::cout << "The Epiration Date is: " << itemExpiration << std::endl;
+	std::cout << "The Labeled Ounces of the item is: " << item_Labeled_Oz << "Oz\n"
+		 << "The item was entered on: " << time(&itemExpiration) << std::endl;
+
 } // end of Print_Cell_contens()

@@ -18,14 +18,16 @@ using namespace std;
 //  for compilation
 
 enum cell{BOTTOM = 1, TOP};
-enum item_size{SMALL, LARGE};  // SMALL represents the case of 1 Unit Cell
+enum item_size{SMALL = 0, LARGE};  // SMALL represents the case of 1 Unit Cell
 							   // LARGE = 1 Container to store
 
-class Storage_System:public {
+class Storage_System{
 public:
 	//Default Ctor
-	Storage_System() : available_Cells(MAX_AVAILABLE_CELLS),  
-		open_Container->SS_Array[0][0], open_CellNum(BOTTOM); {}
+	Storage_System() : available_Cells(MAX_AVAILABLE_CELLS),
+		open_CellNum(BOTTOM) {
+		open_Container = &SS_Array[0][0];
+	}
 
 	// Accessors
 	int Get_Avl_NumCells() { return available_Cells; }
@@ -39,7 +41,7 @@ public:
 	void	Decrement_Avl_Cells();
 	void	Increment_Avl_Cells();
 	void	Remove_Item(); 
-	bool	FindItem(string item_name); //TODO?
+	//bool	FindItem(string item_name); //TODO?
 	void	Insert_Item(string name, string expiration, double height, 
 						double dia_length, double volume, double labeled_oz,
 														double approx_weight); //TODO
